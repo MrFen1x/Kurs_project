@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Заголовок страницы -->
+    <h1 class="mb-4">Редактировать конфигурацию</h1>
+    <!-- Форма для редактирования параметров конфигурации -->
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <!-- Поле для цвета -->
+        <div class="mb-3">
+            <label for="color" class="form-label">Цвет (HEX):</label>
+            <input type="text" name="color" id="color" value="{{ config.color }}" class="form-control">
+        </div>
+        <!-- Поле для амплитуды -->
+        <div class="mb-3">
+            <label for="amplitude" class="form-label">Амплитуда:</label>
+            <input type="number" name="amplitude" id="amplitude" value="{{ config.amplitude }}" step="0.1" class="form-control">
+        </div>
+        <!-- Поле для масштаба -->
+        <div class="mb-3">
+            <label for="scale" class="form-label">Масштаб:</label>
+            <input type="number" name="scale" id="scale" value="{{ config.scale }}" step="0.1" class="form-control">
+        </div>
+        <!-- Кнопка для отправки формы -->
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <!-- Ссылка для отмены -->
+        <a href="{% url 'public_gallery' %}" class="btn btn-secondary ms-2">Отмена</a>
+    </form>
+{% endblock %}

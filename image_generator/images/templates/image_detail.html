@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Заголовок страницы -->
+    <h1 class="mb-4">Детали изображения</h1>
+    <!-- Карточка для отображения конфигурации и изображения -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <!-- Информация об авторе -->
+            <p class="card-text"><strong>Автор:</strong> {{ config.user.username }}</p>
+            <!-- Информация о цвете -->
+            <p class="card-text"><strong>Цвет:</strong> {{ config.color }}</p>
+            <!-- Информация об амплитуде -->
+            <p class="card-text"><strong>Амплитуда:</strong> {{ config.amplitude }}</p>
+            <!-- Информация о масштабе -->
+            <p class="card-text"><strong>Масштаб:</strong> {{ config.scale }}</p>
+            <!-- Изображение в формате base64 -->
+            <img src="data:image/png;base64,{{ image_base64 }}" alt="Косинусоида" class="img-fluid">
+        </div>
+    </div>
+    <!-- Ссылка для возврата в галерею -->
+    <a href="{% url 'public_gallery' %}" class="btn btn-secondary">Вернуться в галерею</a>
+{% endblock %}

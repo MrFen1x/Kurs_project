@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Заголовок страницы -->
+    <h1 class="mb-4">Создать изображение</h1>
+    <!-- Форма для ввода параметров изображения -->
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <!-- Поле для выбора цвета -->
+        <div class="mb-3">
+            <label for="color" class="form-label">Цвет (HEX):</label>
+            <input type="text" name="color" id="color" value="#0000FF" class="form-control">
+        </div>
+        <!-- Поле для ввода амплитуды -->
+        <div class="mb-3">
+            <label for="amplitude" class="form-label">Амплитуда:</label>
+            <input type="number" name="amplitude" id="amplitude" value="1.0" step="0.1" class="form-control">
+        </div>
+        <!-- Поле для ввода масштаба -->
+        <div class="mb-3">
+            <label for="scale" class="form-label">Масштаб:</label>
+            <input type="number" name="scale" id="scale" value="1.0" step="0.1" class="form-control">
+        </div>
+        <!-- Кнопка для отправки формы -->
+        <button type="submit" class="btn btn-primary">Сгенерировать</button>
+    </form>
+    {% if image_base64 %}
+        <!-- Отображение сгенерированного изображения -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Сгенерированное изображение</h5>
+                <img src="data:image/png;base64,{{ image_base64 }}" alt="Косинусоида" class="img-fluid">
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

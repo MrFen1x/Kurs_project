@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Заголовок страницы -->
+    <h1 class="mb-4">Вход</h1>
+    <!-- Форма для входа -->
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <!-- Поля формы (генерируются Django) -->
+        {% for field in form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <!-- Ошибки ввода -->
+                    <div class="text-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <!-- Кнопка для отправки формы -->
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+{% endblock %}

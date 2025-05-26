@@ -1,11 +1,12 @@
-# Определение версии Docker Compose
-version: '3.9'
-
 # Описание сервисов
 services:
   web:
     # Сборка контейнера из Dockerfile
-    build: image_generator
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Явное имя образа
+    image: cosine_graph_generator:web
     # Команда для запуска
     command: python manage.py runserver 0.0.0.0:8000
     # Монтирование текущей директории
@@ -17,20 +18,3 @@ services:
     # Переменные окружения
     environment:
       - DEBUG=1
-    # Зависимости для сборки
-    depends_on:
-      - db
-
-  db:
-    # Использование образа SQLite (встроен в Django)
-    image: nouchka/sqlite3:latest
-    # Монтирование тома для данных
-    volumes:
-      - sqlite_data:/root/db
-    # Открытие порта (если требуется внешний доступ)
-    ports:
-      - "5432:5432"
-
-# Определение томов
-volumes:
-  sqlite_data:

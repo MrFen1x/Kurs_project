@@ -8,6 +8,10 @@ import io
 import base64
 from images.models import ImageConfig
 from images.forms import CustomUserCreationForm
+from django.contrib.auth import get_user_model
+
+# Получение модели пользователя
+User = get_user_model()
 
 # Кастомный декоратор для проверки прав владельца или админа
 def owner_or_admin_required(view_func):
@@ -25,47 +29,42 @@ def owner_or_admin_required(view_func):
 def generate_image_view(request):
     image_base64 = None
     if request.method == 'POST':
-        # Получение параметров из формы
         color = request.POST.get('color', '#0000FF')
         amplitude = float(request.POST.get('amplitude', 1.0))
         scale = float(request.POST.get('scale', 1.0))
 
-        # Параметры изображения
+        # Image parameters
         width, height = int(600 * scale), int(400 * scale)
-        image = np.ones((height, width, 3), dtype=np.uint8) * 255  # Белый фон
+        image = np.ones((height, width, 3), dtype=np.uint8) * 255  # White background
 
-        # Конвертация HEX-цвета в RGB
+        # Convert HEX color to RGB
         color = color.lstrip('#')
         r, g, b = int(color[0:2], 16), int(color[2:4], 16), int(color[4:6], 16)
 
-        # Генерация точек косинусоиды
+        # Generate cosine function points
         x = np.linspace(0, 2 * np.pi, width)
-        # Масштабирование амплитуды: 0.4 * height для полного отображения
-        y = amplitude * (0.4 * height) * np.cos(x)
-        y = (height / 2 - y).astype(int)  # Центрирование по Y
+        y = amplitude * 100 * np.cos(x)  # Scale amplitude for visibility
+        y = (height / 2 - y).astype(int)  # Center on Y-axis
 
-        # Ограничение Y-координат в пределах изображения
-        y = np.clip(y, 0, height - 1)
-
-        # Отрисовка косинусоиды
+        # Draw cosine line
         for i in range(width - 1):
             cv2.line(
                 image,
                 (i, y[i]),
                 (i + 1, y[i + 1]),
-                (b, g, r),  # OpenCV использует BGR
+                (b, g, r),  # OpenCV uses BGR
                 thickness=2
             )
 
-        # Отрисовка осей
-        cv2.line(image, (0, height // 2), (width, height // 2), (0, 0, 0), 1)  # Ось X
-        cv2.line(image, (width // 2, 0), (width // 2, height), (0, 0, 0), 1)  # Ось Y
+        # Draw axes
+        cv2.line(image, (0, height // 2), (width, height // 2), (0, 0, 0), 1)  # X-axis
+        cv2.line(image, (width // 2, 0), (width // 2, height), (0, 0, 0), 1)  # Y-axis
 
-        # Сохранение в буфер и конвертация в base64
+        # Save to buffer and convert to base64
         _, buffer = cv2.imencode('.png', image)
         image_base64 = base64.b64encode(buffer).decode('utf-8')
 
-        # Сохранение параметров
+        # Save parameters
         ImageConfig.objects.create(
             user=request.user,
             color=color,
@@ -78,38 +77,33 @@ def generate_image_view(request):
 # Генерация изображения из сохранённой конфигурации (для ссылок в галерее)
 def generate_image_from_config(request, pk):
     config = get_object_or_404(ImageConfig, pk=pk)
-    # Параметры изображения
     width, height = int(600 * config.scale), int(400 * config.scale)
-    image = np.ones((height, width, 3), dtype=np.uint8) * 255  # Белый фон
+    image = np.ones((height, width, 3), dtype=np.uint8) * 255  # White background
 
-    # Конвертация HEX-цвета в RGB
+    # Convert HEX color to RGB
     color = config.color.lstrip('#')
     r, g, b = int(color[0:2], 16), int(color[2:4], 16), int(color[4:6], 16)
 
-    # Генерация точек косинусоиды
+    # Generate cosine function points
     x = np.linspace(0, 2 * np.pi, width)
-    # Масштабирование амплитуды: 0.4 * height для полного отображения
-    y = config.amplitude * (0.4 * height) * np.cos(x)
-    y = (height / 2 - y).astype(int)  # Центрирование по Y
+    y = config.amplitude * 100 * np.cos(x)  # Scale amplitude for visibility
+    y = (height / 2 - y).astype(int)  # Center on Y-axis
 
-    # Ограничение Y-координат в пределах изображения
-    y = np.clip(y, 0, height - 1)
-
-    # Отрисовка косинусоиды
+    # Draw cosine line
     for i in range(width - 1):
         cv2.line(
             image,
             (i, y[i]),
             (i + 1, y[i + 1]),
-            (b, g, r),  # OpenCV использует BGR
+            (b, g, r),  # OpenCV uses BGR
             thickness=2
         )
 
-    # Отрисовка осей
-    cv2.line(image, (0, height // 2), (width, height // 2), (0, 0, 0), 1)  # Ось X
-    cv2.line(image, (width // 2, 0), (width // 2, height), (0, 0, 0), 1)  # Ось Y
+    # Draw axes
+    cv2.line(image, (0, height // 2), (width, height // 2), (0, 0, 0), 1)  # X-axis
+    cv2.line(image, (width // 2, 0), (width // 2, height), (0, 0, 0), 1)  # Y-axis
 
-    # Сохранение в буфер и конвертация в base64
+    # Save to buffer
     _, buffer = cv2.imencode('.png', image)
     image_base64 = base64.b64encode(buffer).decode('utf-8')
     return image_base64
@@ -126,10 +120,17 @@ def my_gallery(request):
     configs = ImageConfig.objects.filter(user=request.user)
     return render(request, 'gallery.html', {'configs': configs})
 
-# Публичная галерея
+# Публичная галерея (отображение уникальных авторов)
 def public_gallery(request):
-    configs = ImageConfig.objects.all()
-    return render(request, 'gallery.html', {'configs': configs})
+    # Получение уникальных пользователей, создавших конфигурации
+    authors = User.objects.filter(image_configs__isnull=False).distinct()
+    return render(request, 'gallery.html', {'authors': authors})
+
+# Галерея конкретного пользователя
+def user_gallery(request, username):
+    user = get_object_or_404(User, username=username)
+    configs = ImageConfig.objects.filter(user=user)
+    return render(request, 'gallery.html', {'configs': configs, 'gallery_user': user})
 
 # Удаление конфигурации (ограничено владельцем или админом)
 @owner_or_admin_required

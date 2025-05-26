@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c13c79dc-8af3-4541-9402-a1037e88c983" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Kurs_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c13c79dc-8af3-4541-9402-a1037e88c983" name="Changes" comment="0.2(beta)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/templates/gallery.html" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/templates/gallery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/templates/image_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/templates/image_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +26,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MrFen1x&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MrFen1x/Kurs_project.git&quot;,
+    &quot;accountId&quot;: &quot;713ab258-d5ec-448b-afb8-794957c2ca88&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -53,7 +70,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -89,11 +106,51 @@
       <workItem from="1747993476934" duration="1220000" />
       <workItem from="1748085155469" duration="954000" />
       <workItem from="1748103069164" duration="68000" />
-      <workItem from="1748109292216" duration="5785000" />
+      <workItem from="1748109292216" duration="7818000" />
+      <workItem from="1748147752235" duration="2571000" />
+      <workItem from="1748228180357" duration="1250000" />
     </task>
+    <task id="LOCAL-00001" summary="0.2(beta)">
+      <option name="closed" value="true" />
+      <created>1748115894942</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748115894942</updated>
+    </task>
+    <task id="LOCAL-00002" summary="0.2(beta)">
+      <option name="closed" value="true" />
+      <created>1748116944764</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748116944764</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="0.2(beta)" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.2(beta)" />
   </component>
 </project>

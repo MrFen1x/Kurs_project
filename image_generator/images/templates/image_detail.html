@@ -17,6 +17,6 @@
             <img src="data:image/png;base64,{{ image_base64 }}" alt="Косинусоида" class="img-fluid">
         </div>
     </div>
-    <!-- Ссылка для возврата в галерею -->
-    <a href="{% url 'public_gallery' %}" class="btn btn-secondary">Вернуться в галерею</a>
+    <!-- Кнопка для возврата на предыдущую страницу -->
+    <button onclick="history.back()" class="btn btn-secondary">Вернуться назад</button>
 {% endblock %}

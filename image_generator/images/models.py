@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-class User(AbstractUser):
+class User(AbstractUser): # Определение кастомной модели пользователя, наследующейся от AbstractUser
     # Указываем уникальные related_name для избежания конфликта
     groups = models.ManyToManyField(
         'auth.Group',
@@ -11,13 +11,7 @@ class User(AbstractUser):
         help_text='The groups this user belongs to.',
         verbose_name='groups'
     )
-    user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        related_name='images_user_permissions',  # Уникальное имя для обратного аксессора
-        blank=True,
-        help_text='Specific permissions for this user.',
-        verbose_name='user permissions'
-    )
+
 
 class ImageConfig(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='image_configs')

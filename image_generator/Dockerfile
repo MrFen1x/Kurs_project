@@ -4,6 +4,9 @@ FROM python:3.13-slim
 # Установка рабочей директории
 WORKDIR /app
 
+# Обновление pip до последней версии
+RUN pip install --upgrade pip
+
 # Копирование зависимостей
 COPY requirements.txt .
 
@@ -21,4 +24,4 @@ COPY . .
 ENV PYTHONUNBUFFERED=1
 
 # Запуск Django-сервера
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "localhost:8000"]

@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c13c79dc-8af3-4541-9402-a1037e88c983" name="Changes" comment="0.3(beta)">
-      <change afterPath="$PROJECT_DIR$/image_generator/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image_generator/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image_generator/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image_generator/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image_generator/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image_generator/images/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/images/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/images/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_generator/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/image_generator/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +118,8 @@
       <workItem from="1748258872409" duration="628000" />
       <workItem from="1748268366906" duration="30000" />
       <workItem from="1748283200425" duration="2138000" />
+      <workItem from="1748310443880" duration="3200000" />
+      <workItem from="1748325790291" duration="656000" />
     </task>
     <task id="LOCAL-00001" summary="0.2(beta)">
       <option name="closed" value="true" />
